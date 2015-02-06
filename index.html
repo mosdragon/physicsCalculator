@@ -1,0 +1,309 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Physics Grade Calculator</title>
+    <link rel="stylesheet" href="foundation/css/foundation.css" />
+    <script src="foundation/js/vendor/modernizr.js"></script>
+  </head>
+  <body>
+    
+    <div class="row">
+      <div class="medium-8 small-12 columns">
+        <h2>Physics Grade Calculator</h2>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="medium-8 small-12 columns">
+      	<div class="panel">
+	        <p>This grade Calculator is designed specifically for Georgia Tech's Modern Physics 1 &amp; 2 classes. Modern PHYS 2211 and PHYS 2212 use different weights
+	        for determining test average and bucket points, so this calculator computes it all for you.</p>
+	        <br/>
+
+	        <p>If you prefer to calculate it through Excel, you can find the one provided by Dr. Ed Greco <a href="Gradebook_Template.xls">here</a>.</p>
+	        <p>Also, feel free to download this page and load it on your own computer whenever. (Crtl + S) for Windows / Linux, (Cmd + S) for Mac </p>
+      	</div>
+      </div>
+    </div>
+
+    <div class = "row">
+
+    	<div class = "medium-8 small-12">
+
+        <form action="" id="gradeform" onsubmit="return false;">
+        
+	        <hr />
+	        <h3>Test Scores</h3>
+	        <div class="row">
+	        
+	        	<div class="medium-6 small-12 columns">
+			    	<label>Test 1</label>
+			    	<input type="number" step="0.01" value="85" name="test1" />
+			    </div>
+
+			    <div class="medium-6 small-12 columns">
+			    	<label>Test 2</label>
+			    	<input type="number" step="0.01" value="85" name="test2" />
+			    </div>
+
+			    <div class="medium-6 small-12 columns">
+			    	<label>Test 3</label>
+			    	<input type="number" step="0.01" value="85" name="test3" />
+			    </div>
+
+			    <div class="medium-6 small-12 columns">
+			    	<label>Test 4</label>
+			    	<input type="number" step="0.01" value="85" name="test4" />
+			    </div>
+
+			    <div class="medium-6 small-12 columns">
+			    	<label>Final Exam</label>
+			    	<input type="number" step="0.01" value="85" name="finalexam" />
+			    </div>
+
+	        </div>
+
+	        <hr/>
+
+	        <h3>Lab Scores</h3>
+	        <div class="row">
+
+				<div class="medium-6 small-12 columns">
+			    	<label>Lab</label>
+			    	<input type="number" step="0.01" value="85" name="labgrade" />
+			    </div>
+
+			    <div class="medium-6 small-12 columns">
+			    	<label>Lab Quiz</label>
+			    	<input type="number" step="0.01" value="85" name="labquiz" />
+			    </div>
+
+	        </div>
+
+	        <hr />
+
+	        <h3>Bucket Points</h3>
+	        <div class="row">
+
+				<div class="medium-6 small-12 columns">
+			    	<label>Clickers</label>
+			    	<input type="number" step="0.01" value="85" name="clickers" />
+			    </div>
+
+			    <div class="medium-6 small-12 columns">
+			    	<label>HW</label>
+			    	<input type="number" step="0.01" value="85" name="hw" />
+			    </div>
+
+			    <div class="medium-6 small-12 columns">
+			    	<label>Optional</label>
+			    	<input type="number" step="0.01" value="85" name="optional" />
+			    </div>
+
+			    <div class="medium-6 small-12 columns">
+			    	<label>Wrappers</label>
+			    	<input type="number" step="0.01" value="85" name="wrappers" />
+			    </div>
+
+			    <div class="medium-6 small-12 columns">
+			    	<label>Reading</label>
+			    	<input type="number" step="0.01" value="85" name="reading" />
+			    </div>
+
+			    <div class="medium-6 small-12 columns">
+			    	<label>Public Lectures</label>
+			    	<input type="number" step="0.01" value="85" name="publiclectures" />
+			    </div>
+
+			    <div class="medium-6 small-12 columns">
+			    	<label>Post Quiz Tutorial</label>
+			    	<input type="number" step="0.01" value="85" name="postquiztutorial" />
+			    </div>
+
+	        </div>
+
+	        <hr/>
+
+	        <h3>Other</h3>
+	        <div class="row">
+	        	<div class="medium-6 small-12 columns">
+			    	<label>Extra Credit</label>
+			    	<input type="number" step="0.01" value="85" name="extracredit" />
+			    </div>
+
+			    <div class="small-12 columns">
+			    	<button class="small button" onclick="calculate()">Submit</button><br/>
+			    </div>
+	        </div>
+
+	        <hr/>
+	        <h3>Results</h3>
+	        <div class="row">
+          <div class="small-4 columns">
+            <h5>
+            Test Average: <div id="testavg">???</div>
+            </h5>
+          </div>
+          <div class="small-4 columns">
+            <h5>
+            Core: <div id="core">???</div>
+            </h5>
+          </div>
+          <div class="large-4 medium-4 small-4 columns">
+            <h5>
+            Bucket: <div id="bucket">???</div>
+            </h5>
+          </div>
+
+          <div class="large-4 medium-4 small-4 columns">
+            <h5>
+            Final Average : <div id="overall">???</div>
+            </h5>
+          </div>
+
+          <div class="large-4 medium-4 small-4 columns">
+            <h5>
+            Letter Grade : <div id="letterGrade">???</div>
+            </h5>
+          </div>
+
+        </div>
+
+        <hr/>
+
+        <br/><br/>
+
+        <footer>Created by Muhammad Osama Sakhi </footer>
+
+        <br/><br/>
+
+        </form>
+
+
+        </div>
+    </div> 
+
+
+    
+    <script src="foundation/js/vendor/jquery.js"></script>
+    <script src="foundation/js/foundation.min.js"></script>
+    <script>
+    	$(document).foundation();
+    	var gradeform = document.forms["gradeform"];
+    	console.log(gradeform);
+
+    	var calculate = function() {
+
+    		var overall = 0;
+
+	    	// Test
+	    	var test1 = parseFloat(gradeform.elements["test1"].value);
+	    	var test2 = parseFloat(gradeform.elements["test2"].value);
+	    	var test3 = parseFloat(gradeform.elements["test3"].value);
+	    	var test4 = parseFloat(gradeform.elements["test4"].value);
+
+	    	var finalexam = parseFloat(gradeform.elements["finalexam"].value);
+
+			// Lab
+			var labgrade = parseFloat(gradeform.elements["labgrade"].value);
+			var labquiz = parseFloat(gradeform.elements["labquiz"].value);
+
+			// Bucket
+			var clickers = parseFloat(gradeform.elements["clickers"].value);
+			var hw = parseFloat(gradeform.elements["hw"].value);
+			var optional = parseFloat(gradeform.elements["optional"].value);
+			var wrappers = parseFloat(gradeform.elements["wrappers"].value);
+			var reading = parseFloat(gradeform.elements["reading"].value);
+			var publiclectures = parseFloat(gradeform.elements["publiclectures"].value);
+			var postquiztutorial = parseFloat(gradeform.elements["postquiztutorial"].value);
+
+			// Extra
+			var extracredit = parseFloat(gradeform.elements["extracredit"].value);
+
+			var testgrades = [test1, test2, test3, test4];
+			var testWeights = [6, 11, 11, 17];
+			var testavg = 0;
+			var i = 0;
+
+			while (testgrades.length > 0) {
+				var min = Math.min.apply(Math, testgrades);
+				var index = testgrades.indexOf(min);
+				testgrades.splice(index, 1);
+				testavg += min * testWeights[i] / 100;
+				i++;
+			}
+			testavg = testavg / 0.45;
+
+			
+			overall += testavg * 0.45;
+			overall += finalexam * 0.25;
+
+			overall += labgrade * 0.15;
+			overall += labquiz * 0.05;
+
+			var core = overall / 0.9;
+
+
+			var bucketsum = 0;
+			var bucketWeights = [5, 5, 3, 1, 2, 2, 2];
+			var bucketCategories = [clickers , hw , optional , wrappers , reading , publiclectures , postquiztutorial]
+			for (var i = 0; i < bucketWeights.length; i++) {
+				bucketsum += bucketCategories[i] * bucketWeights[i];
+			}
+			bucketsum /= 100;
+
+			var bucketScore = Math.min(bucketsum, 10) / 0.1;
+			overall += bucketScore * 0.1;
+
+			overall += extracredit * 0.01;
+
+
+			var letterGrade = "";
+
+			if (overall >= 90) {
+				letterGrade = "A";
+			} else if (overall >= 80) {
+				letterGrade = "B";
+			} else if (overall >= 70) {
+				letterGrade = "C";
+			} else if (overall >= 60) {
+				letterGrade = "D";
+			} else {
+				letterGrade = "F";
+			}
+
+
+			// Round all grades to 2 decimal places here
+			testavg = Math.floor(testavg * 100) / 100;
+			core = Math.floor(core * 100) / 100;
+			bucketScore = Math.floor(bucketScore * 100) / 100;
+			overall = Math.floor(overall * 100) / 100;
+
+
+			console.log(overall);
+			// var td = document.getElementyById('myTD_ID');
+			// td.textContent= "mytext"
+			var testavg_holder = document.getElementById("testavg");
+			testavg_holder.textContent = testavg;
+
+			var core_holder = document.getElementById("core");
+			core_holder.textContent = core;
+
+			var bucket_holder = document.getElementById("bucket");
+			bucket_holder.textContent = bucketScore;
+
+			var overall_holder = document.getElementById("overall");
+			overall_holder.textContent = overall;
+
+			var letterGrade_holder = document.getElementById("letterGrade");
+			letterGrade_holder.textContent = letterGrade;
+
+			console.log(overall);
+  	}
+
+    </script>
+
+  </body>
+</html>
